@@ -1,0 +1,32 @@
+{
+    "name": "Rust Playground",
+    "image": "mcr.microsoft.com/devcontainers/rust:latest",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "rust-lang.rust-analyzer",
+                "tamasfe.even-better-toml",
+                "vadimcn.vscode-lldb",
+                "aaron-bond.better-comments",
+                "DavidAnson.vscode-markdownlint", // standardize markdown formatting
+                "streetsidesoftware.code-spell-checker", // spelling is hard,
+                "ryanluker.vscode-coverage-gutters" // visual coverage highlighting for unit testing
+            ],
+            "settings": {
+                "editor.formatOnSave": true,
+                "[rust]": {
+                    "editor.defaultFormatter": "rust-lang.rust-analyzer"
+                },
+                "coverage-gutters.manualCoverageFilePaths": []
+            }
+        }
+    },
+    "mounts": [
+        {
+            "source": "devcontainer-cargo-cache-${devcontainerId}",
+            "target": "/usr/local/cargo",
+            "type": "volume"
+        }
+    ],
+    "postCreateCommand": "rustup update stable && rustup default stable && rustup component add clippy rustfmt"
+}

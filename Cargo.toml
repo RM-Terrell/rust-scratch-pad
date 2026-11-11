@@ -1,0 +1,15 @@
+[package]
+name = "rust-playground"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+
+
+[dev-dependencies]
+pretty_assertions = "1.4.1"
+criterion = { version = "0.8.2", features = ["html_reports"] }
+
+[[bench]]
+name = "example-whitespace_bench"
+harness = false
